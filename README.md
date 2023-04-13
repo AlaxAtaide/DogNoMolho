@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-O Site contém: menu para hotdogs, bebidas e serviços de atendimento da empresa.
+O Site contém: menu para hotdogs, bebidas e serviços de atendimento ao cliente.
 
 
 ## Skills
