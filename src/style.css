@@ -20,6 +20,28 @@ body {
   background-color: #FF7A00;
   padding: 2% 5% 2%;
   border-radius: 0px 0px 30px 30px;
+  position: relative; /* Adiciona posicionamento relativo */
+}
+
+.icon-js {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #dbefff;
+  position: absolute;
+  top: 50%; /* Centraliza verticalmente */
+  left: -50px; /* Ajusta a posição para a esquerda */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%); /* Centraliza verticalmente */
+}
+
+.icon-js::before {
+  content: '\f186';
+  font-family: fontAwesome;
+  font-size: 20px;
 }
 
 .logo {
@@ -60,6 +82,18 @@ body {
   transform: translateY(-50%);
   color: #000000;
 }
+
+
+.logo-and-search {
+  display: flex;
+  align-items: center;
+  background-color: #FF7A00;
+  padding: 2% 5% 2%;
+  border-radius: 0px 0px 30px 30px;
+  position: relative; /* Adiciona posicionamento relativo */
+}
+
+
 
 a {
   color: #000000;
@@ -303,25 +337,6 @@ main {
 */
 
 
-.icon-js {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #dbefff;
-  position: absolute;
-  top: 7%;
-  right: 56%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-js::before {
-  content: '\f186';
-  font-family: fontAwesome;
-  font-size: 20px;
-}
 
 .body.dark {
   background: #202926;
@@ -423,13 +438,7 @@ ul li a:hover {
     color: #FF7A00;
   }
 
-    /* Botão modo dark */
-    .icon-js {
-      width: 7vw; 
-      height: 7vw;
-      top: 10%; 
-      left: 20%; 
-    }
+
 }
 
 
