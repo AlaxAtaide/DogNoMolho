@@ -171,6 +171,13 @@ main {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
   height: 400px;
   flex-shrink: 0; /* Impede que a imagem seja encolhida */
+  transition: 0.3s;
+}
+
+
+.card:hover {
+  box-shadow: 0 0 20px #ff7b00;
+  transform: scale3d(1.1,1.1, 1);
 }
 
 .image-content img {
@@ -306,8 +313,6 @@ main {
 }
 
 
-
-
 /* borda da imagem*/
 .card-image {
   position: absolute;
@@ -386,8 +391,9 @@ ul li a:hover {
   }
   
   .card {
-    width: calc(100% - 40px); /* Reduz a largura do card para ocupar 100% da largura disponível com uma margem de 20px em cada lado */
+    width: calc(95% - 40px); /* Reduz a largura do card para ocupar 100% da largura disponível com uma margem de 20px em cada lado */
     height: auto; /* Define a altura do card como automática para se ajustar ao conteúdo */
+
   }
 
   .image-content img {
@@ -436,7 +442,10 @@ ul li a:hover {
   .nav-links li a.active {
     color: #FF7A00;
   }
-
+  .card:hover {
+    box-shadow: 0 0 20px #ff7b00;
+    transform: scale3d(1.1, 1.1, 1);
+  }
 
 }
 
