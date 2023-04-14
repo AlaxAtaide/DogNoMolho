@@ -111,8 +111,6 @@ ul li a:hover {
 }
 
 
-
-
 main {
   min-height: 50vh;
   display: flex;
@@ -136,8 +134,27 @@ main {
   background-color: #fff;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15)
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  height: 400px;
+  flex-shrink: 0; /* Impede que a imagem seja encolhida */
 }
+
+.image-content img {
+  object-fit: cover; /* Garante que a imagem se ajuste proporcionalmente ao container */
+  height: 110%; /* Ocupa todo o espaço disponível do container */
+  width: 100%; /* Ocupa todo o espaço disponível do container */
+}
+
+
+.image-content,
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2px 14px;
+  height: 100%; /* Defina a altura como 100% para ocupar todo o espaço disponível */
+}
+
 
 .slide {
   margin: 0 40px;
@@ -194,6 +211,8 @@ main {
   font-size: 1.2em;
   text-align: center;
   padding-left: 100px;
+  margin: 0.6em;
+  
 }
 
 
@@ -249,7 +268,10 @@ main {
 .image-content {
   position: relative;
   height: 250px; /* altura desejada */
+  
 }
+
+
 
 
 /* borda da imagem*/
@@ -317,4 +339,95 @@ main {
 .body.dark ul li a.active, .body.dark
 ul li a:hover {
   color: #FF7A00;
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 767px) {
+
+  .logo-and-search {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-box {
+    margin: 20px 0;
+  }
+
+  .search-box input {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .logo-and-search {
+    width: 100%; /* Ajuste a largura de acordo com o tamanho desejado */
+    height: 150px; /* Ajuste a altura de acordo com o tamanho desejado */
+    background-color: #FF7A00; /* Cor de fundo desejada */
+  }
+  
+  .logo {
+    margin: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap; /* Adicione a propriedade white-space: nowrap; para evitar a quebra de texto em várias linhas */
+  }
+  
+  .card {
+    width: calc(100% - 40px); /* Reduz a largura do card para ocupar 100% da largura disponível com uma margem de 20px em cada lado */
+    height: auto; /* Define a altura do card como automática para se ajustar ao conteúdo */
+  }
+
+  .image-content img {
+    min-height: 150px; /* Define uma altura mínima para a imagem */
+  }
+
+  .card-content {
+    padding: 10px; /* Reduz o espaçamento interno do card */
+  }
+
+  .card-wrapper,
+  .card-wrapper2 {
+    flex-direction: column; /* Altera a direção do flex para coluna para que os cards fiquem um abaixo do outro */
+    align-items: center; /* Centraliza os cards verticalmente */
+  }
+
+  /* Estilize o link ativo e o link em hover dentro desta media query */
+  .nav-links li a.active,
+  .nav-links li a:hover {
+    color: #FF7A00;
+  }
+
+  .nav-links li a {
+    position: relative;
+  }
+
+  .nav-links li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: #FF7A00;
+    transition: all 0.3s ease-in-out;
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+
+  .nav-links li a:hover::after,
+  .nav-links li a.active::after {
+    transform: scaleX(1);
+  }
+
+  /* Estilize o link ativo */
+  .nav-links li a.active {
+    color: #FF7A00;
+  }
+
+    /* Botão modo dark */
+    .icon-js {
+      width: 7vw; /* 15% da largura da viewport */
+      height: 7vw; /* 15% da largura da viewport */
+      top: 10%; /* 10% da altura da viewport */
+      left: 20%; /* 10% da largura da viewport */
+    }
 }
