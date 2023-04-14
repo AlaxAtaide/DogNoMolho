@@ -425,9 +425,26 @@ ul li a:hover {
 
     /* Botão modo dark */
     .icon-js {
-      width: 7vw; /* 15% da largura da viewport */
-      height: 7vw; /* 15% da largura da viewport */
-      top: 10%; /* 10% da altura da viewport */
-      left: 20%; /* 10% da largura da viewport */
+      width: 7vw; 
+      height: 7vw;
+      top: 10%; 
+      left: 20%; 
     }
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Estilos para dispositivos com largura de tela de 768 pixels até 1023 pixels */
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  /* Estilos para dispositivos com largura de tela de 1024 pixels até 1365 pixels */
+}
+
+@media (min-width: 1366px) {
+  /* Estilos para dispositivos com largura de tela de 1366 pixels ou mais */
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Estilos para dispositivos com alta densidade de pixels */
 }
