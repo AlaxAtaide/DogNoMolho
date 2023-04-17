@@ -25,36 +25,6 @@ body {
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
 }
 
-.carrinho {
-  position: absolute;
-  top: 2%;
-  right: 4%;
-  font-size: 1.6em;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-
-
-}
-
-.qtdcarrinho {
-  position: absolute;
-  top: 1.5%;
-  right: 3.6%;
-  background-color: #ff0000;
-  color: #fff;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
-}
-
 /* div pai que controla todo a search-box/icone modo dark e logo empresa */
 .logo-and-search {
   display: flex;
@@ -206,6 +176,89 @@ main {
   justify-content: center;
 }
 
+.MENU {
+  position: relative;
+  top: -20px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  width: calc((100% - 10px) / 1);
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  height: 200px;
+  flex-shrink: 0; /* Impede que a imagem seja encolhida */
+  transition: 0.3s;
+  
+}
+
+
+.items {
+    margin: 20px;
+    text-align: left;
+    padding-left: 7%;
+    display: flex;
+
+  }
+
+.check {  
+
+    font-size: 14px;
+    color: #575757;
+    font-weight: 600;
+    text-align: left;
+    padding-left: 10%;
+
+  }
+
+
+
+  .QTD {
+    position: relative;
+    top: -20px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    width: calc((100% - 100px) / 2);
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    height: 200px;
+    flex-shrink: 0; /* Impede que a imagem seja encolhida */
+    transition: 0.3s;
+}
+
+.total {
+  margin: 20px;
+  text-align: left;
+  padding-left: 7%;
+  display: flex;
+  }
+
+.text {
+  text-align: left;
+  padding-left: 10%;
+}
+
+.payments {
+  position: relative;
+  margin: 5px;
+  top: -20px;
+  display: flex;
+  flex-direction: column;
+  width: calc((100% - 100px) / 2);
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  height: 200px;
+  flex-shrink: 0; /* Impede que a imagem seja encolhida */
+  transition: 0.3s;
+}
+
+
 /* configuração dos cards dos produtos */
 
 .card {
@@ -304,12 +357,10 @@ main {
 
 .price {
   color: #04f300e8;
-  font-weight: 1000;
+  font-weight: bold;
   padding-left: 30px;
-  font-size: 1.25em;
+  font-size: 1.2em;
 }
-
-
 
 
 
@@ -468,7 +519,7 @@ footer {
   
   .card {
     width: calc(95% - 40px); /* Reduz a largura do card para ocupar 100% da largura disponível com uma margem de 20px em cada lado */
-   
+    height: auto; /* Define a altura do card como automática para se ajustar ao conteúdo */
 
   }
 
@@ -476,23 +527,6 @@ footer {
     min-height: 150px; /* Define uma altura mínima para a imagem */
   }
 
-  
-  .card-image {
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 5%;
-    width: 100%;
-  }
-  
-  
-  
-  .card-img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
   .card-content {
     padding: 10px; /* Reduz o espaçamento interno do card */
   }
@@ -550,8 +584,6 @@ footer {
     box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   }
 
- 
-
 
   /* BOTTOM NAVIGATION - MOBILE */
 
@@ -582,17 +614,11 @@ a {
 .nav_list {
   display: flex;
   justify-content: center; /* Centralizar os itens */
-  
 }
 
 .navigator {
   flex: 1;
   text-align: center; /* Centralizar os itens dentro do li */
-}
-
-
-.container {
-  overflow: auto; 
 }
 
 .nav_link {
@@ -608,39 +634,15 @@ a {
   font-size: .725rem;
 }
 
-/* classe que gera o circulo vermelho para a qtd de produto no carrinho */
-.qtdcart {
-  visibility: hidden; /* Inicia com visibility:hidden para ficar invisível */
-  position: absolute;
-  top: 1px;
-  right: 180px;
-  background-color: #ff0000;
-  color: #fff;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-
-
-
-
-
-
 .nav_icon {
   font-size: 1.5rem;
-
 }
 
 #move {
-right: 20%;
+  right: 60%;
 }
-
+  
+/* Retira o menu "Atendimento" no mobile (Ele vai para a Bottom Navigation) */
 #cancel {
   display: none;
 }

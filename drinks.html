@@ -9,6 +9,7 @@
     <script src="src/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <title>Dog no Molho</title>
 
 
@@ -31,7 +32,7 @@
         <ul class="nav-links">
             <li><a href="index.html">DOGS</a></li>
             <li><a href="drinks.html" class="active">BEBIDAS</a></li>
-            <li><a href="atendimento.html">ATENDIMENTO</a></li>
+            <li><a href="atendimento.html" id="cancel">ATENDIMENTO</a></li>
         </ul>
     </nav>
 </header>
@@ -55,7 +56,7 @@
               </div>
               <p class="desc">Lorem ipsum dolor sit amet consectetur. Tincidunt proin arcu egestas vel elit sem felis donec iaculis. Lectus feugiat donec.</p>
               
-              <button class="button">Ver Mais</button>
+              <button class="button">Fazer Pedido</button>
             </div>
           </div>
           <!-- 2 CARD -->
@@ -72,7 +73,7 @@
                 <span class="price">R$6,00</span>
               </div>
               <p class="desc">Lorem ipsum dolor sit amet consectetur. Tincidunt proin arcu egestas vel elit sem felis donec iaculis. Lectus feugiat donec.</p>
-              <button class="button">Ver Mais</button>
+              <button class="button">Fazer Pedido</button>
             </div>
           </div>
           <!-- 3 CARD -->
@@ -89,7 +90,7 @@
                 <span class="price">R$6,00</span>
               </div>
               <p class="desc">Lorem ipsum dolor sit amet consectetur. Tincidunt proin arcu egestas vel elit sem felis donec iaculis. Lectus feugiat donec.</p>
-              <button class="button">Ver Mais</button>
+              <button class="button">Fazer Pedido</button>
             </div>
           </div>
         </div>
@@ -108,7 +109,7 @@
               <span class="price">R$3,00</span>
             </div>
             <p class="desc">Lorem ipsum dolor sit amet consectetur. Tincidunt proin arcu egestas vel elit sem felis donec iaculis. Lectus feugiat donec.</p>
-            <button class="button">Ver Mais</button>
+            <button class="button">Fazer Pedido</button>
           </div>
         </div>
         <!-- 5 CARD -->
@@ -125,7 +126,7 @@
               <span class="price">R$4,00</span>
             </div>
             <p class="desc">Lorem ipsum dolor sit amet consectetur. Tincidunt proin arcu egestas vel elit sem felis donec iaculis. Lectus feugiat donec.</p>
-            <button class="button">Ver Mais</button>
+            <button class="button">Fazer Pedido</button>
           </div>
         </div>
         <!-- 6 CARD -->
@@ -142,7 +143,7 @@
               <span class="price">R$5.99</span>
             </div>
             <p class="desc">Lorem ipsum dolor sit amet consectetur. Tincidunt proin arcu egestas vel elit sem felis donec iaculis. Lectus feugiat donec.</p>
-            <button class="button">Ver Mais</button>
+            <button class="button">Fazer Pedido</button>
           </div>
         </div>
       </div>
@@ -153,6 +154,34 @@
     </div>
   </div>
   </main>
+
+  <!-- BOTTOM NAVIGATION - MOBILE -->
+<div class="menubar">
+  <ul class="nav_list">
+      <li class="navigator">
+          <a href="index.html" class="nav_link">
+              <i class='bx bxs-food-menu nav_icon'></i>
+              <span class="nav_name">CARDAPIO</span>
+          </a>
+      </li>
+
+      <li class="navigator">
+          <a href="pedido.html" class="nav_link">
+              <i class='bx bx-cart nav_icon' ></i>
+              <span class="nav_name">PEDIDO</span>
+              <span class="qtdcart"></span>
+          </a>
+      </li>
+
+      <li class="navigator">
+          <a href="atendimento.html" class="nav_link">
+              <i class='bx bxs-user-voice nav_icon' ></i>
+              <span class="nav_name">ATENDIMENTO</span>
+          </a>
+      </li>
+  </ul>
+</div>
+
   
 
     

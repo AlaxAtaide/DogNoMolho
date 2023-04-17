@@ -9,6 +9,7 @@
     <script src="src/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <title>Dog no Molho</title>
 
 
@@ -21,19 +22,24 @@
 <header class="header-container">
     <div class="logo-and-search">
         <a class="logo">Dog no Molho</a>
+
         <div class="search-box">
-            <div class="icon-js"></div>
+          <div class="icon-js"></div>
             <i class="uil uil-search"></i>
             <input type="text" placeholder="Buscar...">
         </div>
     </div>
     <nav class="nav">
         <ul class="nav-links">
-            <li><a href="index.html">DOGS</a></li>
-            <li><a href="drinks.html">BEBIDAS</a></li>
-            <li><a href="atendimento.html" class="active">ATENDIMENTO</a></li>
+            <li><a href="index.html" id="cancel">DOGS</a></li>
+            <li><a href="drinks.html" id="cancel">BEBIDAS</a></li>
+            <li><a href="atendimento.html" class="active" id="move">ATENDIMENTO</a></li>
         </ul>
     </nav>
+
+      <img src="img/User.png" alt="" class="profile">
+      
+
 </header>
 
 <main>
@@ -51,11 +57,11 @@
             <div class="card-content">
               <div class="name-price">
                 <h2 class="name">Sache de molho adicional</h2>
-                <span class="price">R$5.99</span>
+                <span class="price">R$5,00</span>
               </div>
               <p class="desc">Ketchup, Maionese ou Mostarda..</p>
               
-              <button class="button">Fazer Pedido</button>
+              <button class="button">Ver Mais</button>
             </div>
           </div>
           <!-- 2 CARD -->
@@ -69,10 +75,10 @@
             <div class="card-content">
               <div class="name-price">
                 <h2 class="name">Limpeza de Mesa</h2>
-                <span class="price">R$5.99</span>
+                <span class="price">R$5,00</span>
               </div>
               <p class="desc">Faça o pedido de limpeza ao ir embora</p>
-              <button class="button">Fazer Pedido</button>
+              <button class="button">Ver Mais</button>
             </div>
           </div>
           <!-- 3 CARD -->
@@ -86,27 +92,47 @@
             <div class="card-content">
               <div class="name-price">
                 <h2 class="name">Guardanapo extra</h2>
-                <span class="price">R$5.99</span>
+                <span class="price">R$5,00</span>
               </div>
               <p class="desc">Acompanha 5 guardanapos adicionais</p>
-              <button class="button">Fazer Pedido</button>
+              <button class="button">Ver Mais</button>
             </div>
           </div>
         </div>
-        <div class="card-wrapper2">
-       
+
   </div>
+
   </main>
   
+<!-- BOTTOM NAVIGATION - MOBILE -->
+<div class="menubar">
+  <ul class="nav_list">
+      <li class="navigator">
+          <a href="index.html" class="nav_link">
+              <i class='bx bxs-food-menu nav_icon'></i>
+              <span class="nav_name">CARDAPIO</span>
+          </a>
+      </li>
 
-    
-</body>
+      <li class="navigator">
+          <a href="pedido.html" class="nav_link">
+              <i class='bx bx-cart nav_icon' ></i>
+              <span class="nav_name">PEDIDO</span>
+          </a>
+      </li>
 
-    <!-- Swiper CSS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9.1.1/swiper-bundle.min.js" 
-    integrity="sha256-p6RltqiN/aHIURwYhWy5LgVbYRTHIHIkf6A/kXgf4vs=" crossorigin="anonymous">
-    </script>
+      <li class="navigator">
+          <a href="atendimento.html" class="nav_link">
+              <i class='bx bxs-user-voice nav_icon' ></i>
+              <span class="nav_name">ATENDIMENTO</span>
+          </a>
+      </li>
+  </ul>
+</div>
 
-    <script src="js/script.js"></script>
-  
+
+</body>  
+
+<footer></footer>
+
 </html>

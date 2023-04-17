@@ -9,6 +9,7 @@
     <script src="src/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <title>Dog no Molho</title>
 
 
@@ -32,9 +33,15 @@
         <ul class="nav-links">
             <li><a href="index.html" class="active">DOGS</a></li>
             <li><a href="drinks.html">BEBIDAS</a></li>
-            <li><a href="atendimento.html">ATENDIMENTO</a></li>
+            <li><a href="atendimento.html" id="cancel">ATENDIMENTO</a></li>
         </ul>
     </nav>
+
+      <img src="img/User.png" alt="" class="profile">
+      <i class='bx bx-cart carrinho'></i>
+      <span class="qtdcarrinho"></span>
+
+
 </header>
 
 <main>
@@ -52,11 +59,11 @@
             <div class="card-content">
               <div class="name-price">
                 <h2 class="name">Dog Simples</h2>
-                <span class="price">R$12,00</span>
+                <span class="price">12,00</span>
               </div>
               <p class="desc">PÃO DE LEITE NINHO, SALSICHA PERDIGÃO, QUEIJO MUSSARELA, MOLHO DE TOMATE ARTESANAL, MILHO, BATATA PALHA A PARTE E MAIONESE A SUA ESCOLHA.</p>
               
-              <button class="button">Ver Mais</button>
+              <button class="button">Fazer Pedido</button>
             </div>
           </div>
           <!-- 2 CARD -->
@@ -70,10 +77,10 @@
             <div class="card-content">
               <div class="name-price">
                 <h2 class="name">Dog Duplo</h2>
-                <span class="price">R$15,00</span>
+                <span class="price">15,00</span>
               </div>
               <p class="desc">PÃO DE LEITE NINHO, 2 SALSICHAS PERDIGÃO, QUEIJO MUSSARELA. MOLHO DE TOMATE ARTESANAL, MILHO, BATATA PALHA A PARTE, MAIONESE A SUA ESCOLHA.</p>
-              <button class="button">Ver Mais</button>
+              <button class="button">Fazer Pedido</button>
             </div>
           </div>
           <!-- 3 CARD -->
@@ -87,10 +94,10 @@
             <div class="card-content">
               <div class="name-price">
                 <h2 class="name">Dog Cheddar Bacon</h2>
-                <span class="price">R$17,00</span>
+                <span class="price">17,00</span>
               </div>
               <p class="desc">PÃO DE LEITE NINHO, SALSICHA PERDIGÃO, QUEIJO MUSSARELA, MOLHO DE TOMATE ARTESANAL, CHEDDAR CREMOSO, BACON, MILHO, BATATA PALHA A PARTE, MAIONESE A SUA ESCOLHA.</p>
-              <button class="button">Ver Mais</button>
+              <button class="button">Fazer Pedido</button>
             </div>
           </div>
         </div>
@@ -106,10 +113,10 @@
           <div class="card-content">
             <div class="name-price">
               <h2 class="name">Dog Cream Cheese Bacon</h2>
-              <span class="price">R$17,00</span>
+              <span class="price">17,00</span>
             </div>
             <p class="desc">PÃO DE LEITE NINHO, SALSICHA PERDIGÃO, QUEIJO MUSSARELA. MOLHO DE TOMATE ARTESANAL, CREAM CHESSE, BACON, MILHO, BATATA PALHA A PARTE, MAIONESE A SUA ESCOLHA.</p>
-            <button class="button">Ver Mais</button>
+            <button class="button">Fazer Pedido</button>
           </div>
         </div>
         <!-- 5 CARD -->
@@ -123,10 +130,10 @@
           <div class="card-content">
             <div class="name-price">
               <h2 class="name">Dog Cream Cheese Bacon</h2>
-              <span class="price">R$0.00</span>
+              <span class="price">0.00</span>
             </div>
             <p class="desc">PÃO DE LEITE NINHO, SALSICHA PERDIGÃO, QUEIJO MUSSARELA. MOLHO DE TOMATE ARTESANAL, CREAM CHESSE, BACON, MILHO, BATATA PALHA A PARTE, MAIONESE A SUA ESCOLHA.</p>
-            <button class="button">Ver Mais</button>
+            <button class="button">Fazer Pedido</button>
           </div>
         </div>
         <!-- 6 CARD -->
@@ -140,25 +147,46 @@
           <div class="card-content">
             <div class="name-price">
               <h2 class="name">Dog Cream Cheese Bacon</h2>
-              <span class="price">R$0,00</span>
+              <span class="price">0,00</span>
             </div>
             <p class="desc">PÃO DE LEITE NINHO, SALSICHA PERDIGÃO, QUEIJO MUSSARELA. MOLHO DE TOMATE ARTESANAL, CREAM CHESSE, BACON, MILHO, BATATA PALHA A PARTE, MAIONESE A SUA ESCOLHA.</p>
-            <button class="button">Ver Mais</button>
+            <button class="button">Fazer Pedido</button>
           </div>
         </div>
     </div>
   </div>
+
   </main>
   
+<!-- BOTTOM NAVIGATION - MOBILE -->
+<div class="menubar">
+  <ul class="nav_list">
+      <li class="navigator">
+          <a href="index.html" class="nav_link">
+              <i class='bx bxs-food-menu nav_icon'></i>
+              <span class="nav_name">CARDAPIO</span>
+          </a>
+      </li>
 
-    
-</body>
+      <li class="navigator">
+          <a href="pedido.html" class="nav_link">
+              <i class='bx bx-cart nav_icon' ></i>
+              <span class="nav_name">PEDIDO</span>
+              <span class="qtdcart"></span>
+          </a>
+      </li>
 
-    <!-- Swiper CSS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9.1.1/swiper-bundle.min.js" 
-    integrity="sha256-p6RltqiN/aHIURwYhWy5LgVbYRTHIHIkf6A/kXgf4vs=" crossorigin="anonymous">
-    </script>
+      <li class="navigator">
+          <a href="atendimento.html" class="nav_link">
+              <i class='bx bxs-user-voice nav_icon' ></i>
+              <span class="nav_name">ATENDIMENTO</span>
+          </a>
+      </li>
+  </ul>
+</div>
 
-    <script src="js/script.js"></script>
-  
+
+</body>  
+
+<footer></footer>
 </html>
