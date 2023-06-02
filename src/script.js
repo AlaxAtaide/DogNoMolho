@@ -58,14 +58,26 @@ document.addEventListener('DOMContentLoaded', () => {
     let name = product.querySelector('.name').textContent; // Nome do produto
     let desc = product.querySelector('.desc').textContent; // Descrição (tag) do produto
     let price = parseInt(product.querySelector('.price').textContent); // Preço do produto (convertido para número)
+    let tag = product.querySelector('img').getAttribute('src'); // Recebe o nome da imagem do produto
 
-    // Armazena os dados em um objeto
-    let productData = {
-      name: name,
-      desc: desc,
-      price: price,
-      inCart: 0
-    };
+
+  // Formata o preço com o símbolo de moeda "R$" e dois dígitos após a vírgula
+    let formattedPrice = price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+  // Atualiza o elemento HTML com o preço formatado
+    product.querySelector('.price').textContent = formattedPrice;
+
+
+// Armazene o nome da imagem no objeto "productData"
+let productData = {
+  name: name,
+  desc: desc,
+  price: price,
+  inCart: 0,
+  tag: tag
+};
+
+
 
     // Adiciona o objeto de dados do produto ao array
     productsData.push(productData);
@@ -127,17 +139,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if(cartItems != null) {
 
-        if(cartItems[product.desc] == undefined) {
+        if(cartItems[product.name] == undefined) {
           cartItems = {
             ...cartItems,
-            [product.desc]: product
+            [product.name]: product
           }
         }
-        cartItems[product.desc].inCart += 1;
+        cartItems[product.name].inCart += 1;
       } else {
         product.inCart = 1;
         cartItems = {
-          [product.desc]: product
+          [product.name]: product
         }
       }
 
@@ -150,29 +162,191 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function custoTotal(product) {
-
-        //console.log("O preço do produto é", product.price);
- 
-        let cartCusto = localStorage.getItem('custoTotal');
-
-        console.log("Meu custoTotal é", cartCusto);
-        console.log(typeof cartCusto);
-      
+    let cartCusto = localStorage.getItem('custoTotal');
     
-      if(cartCusto != null) {
-        cartCusto = parseInt(cartCusto);
-        localStorage.setItem("custoTotal", cartCusto +
-         product.price);
-      } else {
-        localStorage.setItem("custoTotal", product.price);
-      }
-
+    if (cartCusto != null) {
+      cartCusto = parseInt(cartCusto);
+      localStorage.setItem("custoTotal", cartCusto + product.price);
+    } else {
+      localStorage.setItem("custoTotal", product.price);
+    }
+    
+    // Atualiza o elemento HTML com o valor do custo total
+    let cartTotal = document.querySelector('.basketTotal');
+    if (cartTotal) {
+      cartTotal.textContent = `R$ ${localStorage.getItem('custoTotal')},00`;
+    }
   }
+  
 
+  function displayCart() {
+    let cartItems = localStorage.getItem("productsInCart");
+    cartItems = JSON.parse(cartItems);
+  
+    let productContainer = document.querySelector(".products");
+    let cartCusto = localStorage.getItem('custoTotal');
+  
+    if (cartItems && productContainer) {
+      productContainer.innerHTML = '';
+      Object.values(cartItems).map(item => {
+        productContainer.innerHTML += `
+          <tr class="product">
+            <td class="product-info">
+              <ion-icon name="close-circle" class="close" data-name="${item.name}"></ion-icon>
+              <div class="product-details">
+                <img src="./${item.tag}">
+                <div class="product-name">${item.name}</div>
+              </div>
+            </td>
+            <td class="pricer">${item.price},00</td>
+            <td class="quantity">
+              <ion-icon class="decrease" data-name="${item.name}" name="caret-back-circle"></ion-icon>
+              <span>${item.inCart}</span>
+              <ion-icon class="increase" data-name="${item.name}" name="caret-forward-circle"></ion-icon>
+            </td>
+            <td class="total">
+              R$${item.inCart * item.price},00
+            </td>
+          </tr>
+        `;
+      });
+  
+      productContainer.innerHTML += `
+        <tr class="basketTotalContainer">
+          <td class="basketTotalTittle" colspan="3">
+            Custo Total:
+          </td>
+          <td class="basketTotal">
+            R$ ${cartCusto},00
+          </td>
+        </tr>
+      `;
+  
+      // Seleciona todos os botões de diminuir quantidade
+      let decreaseButtons = document.querySelectorAll('.decrease');
+  
+      // Adiciona um evento de clique para cada botão
+      decreaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          let productName = button.getAttribute('data-name');
+          let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
+          let cartCost = parseInt(localStorage.getItem('custoTotal'));
+  
+          // Se o produto tiver mais de 1 item no carrinho
+          if (cartItems[productName].inCart > 1) {
+            cartItems[productName].inCart -= 1;
+            localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+            localStorage.setItem('custoTotal', cartCost - cartItems[productName].price);
+            displayCart();
+            updateCartTotal();
+          }
+        });
+      });
+  
+      // Seleciona todos os botões de aumentar quantidade
+      let increaseButtons = document.querySelectorAll('.increase');
+  
+      // Adiciona um evento de clique para cada botão
+      increaseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          let productName = button.getAttribute('data-name');
+          let cartItems = JSON.parse(localStorage.getItem('productsInCart'));
+          let cartCost = parseInt(localStorage.getItem('custoTotal'));
+  
+          cartItems[productName].inCart += 1;
+          localStorage.setItem('productsInCart', JSON.stringify(cartItems));
+          localStorage.setItem('custoTotal', cartCost + cartItems[productName].price);
+          displayCart();
+          updateCartTotal();
+        });
+      });
+  
+      // Seleciona todos os botões de remoção de produtos
+      let removeButtons = document.querySelectorAll('.close');
+  
+      // Adiciona um evento de clique para cada botão
+      removeButtons.forEach(button => {
+        button.addEventListener('click', removeCartItem);
+      });
+  
+      // Atualiza o valor total do carrinho
+      let cartTotal = document.querySelector('.cartTotal');
+  
+      if (cartTotal) {
+        cartTotal.textContent = `Total: R$${cartCusto},00`;
+      }
+    }
+  }
+  
+  function removeCartItem(event) {
+    const productName = event.target.dataset.name;
+    let cartItems = JSON.parse(localStorage.getItem("productsInCart"));
+  
+    if (cartItems && cartItems[productName]) {
+      const product = cartItems[productName];
+      const productQuantity = product.inCart;
+  
+      delete cartItems[productName];
+  
+      const updatedProductNumbers = parseInt(localStorage.getItem("cartNumbers")) - productQuantity;
+  
+      localStorage.setItem("productsInCart", JSON.stringify(cartItems));
+      localStorage.setItem("cartNumbers", Math.max(0, updatedProductNumbers));
+  
+      let updatedCartCost = 0;
+  
+      for (const item in cartItems) {
+        updatedCartCost += cartItems[item].price * cartItems[item].inCart;
+      }
+  
+      if (Object.keys(cartItems).length === 0) {
+        localStorage.removeItem("productsInCart");
+        localStorage.removeItem("cartNumbers");
+        localStorage.removeItem("custoTotal");
+        document.querySelector('.basketTotalContainer').textContent = ''; // Remove o valor do custo total do elemento HTML
+      } else {
+        localStorage.setItem("custoTotal", updatedCartCost);
+      }
+  
+      event.target.parentElement.parentElement.remove();
+  
+      document.querySelector(".qtdcart").textContent = Math.max(0, updatedProductNumbers);
+  
+      displayCart(); // Atualiza a exibição do carrinho
+  
+      // Atualiza o valor total do carrinho após a remoção do item
+      updateCartTotal();
+    }
+  }
+  
+  // Chama a função displayCart() para atualizar a exibição do carrinho quando a página for carregada
+  displayCart();
+  
+  // Resto do código...
+  
+  // Função para redirecionar para a página de pagamento com o valor de custoTotal
+  function redirectToCheckout() {
+    let custoTotal = localStorage.getItem('custoTotal');
+    window.location.href = 'checkout.html';
+  }
+  
+  // Adiciona um evento de clique ao botão de pagamento
+  let paymentButton = document.getElementById('payment');
+  if (paymentButton) {
+    paymentButton.addEventListener('click', redirectToCheckout);
+  }
+  
+  // Obtém o elemento do custo total
+  const costValue = document.getElementById('cost-value');
+  
+  // Função para atualizar o valor do custo total na página
+  function updateCostTotal() {
+    let custoTotal = localStorage.getItem('custoTotal');
+    costValue.textContent = `R$ ${custoTotal},00`;
+  }
+  
+  // Chama a função para exibir o custo total inicialmente
+  updateCostTotal();
 
-
-  // Chama a função onLoadCartNumbers() para atualizar o número de itens no carrinho quando a página for carregada
-  onLoadCartNumbers();
-
-
-});
+  
+});  

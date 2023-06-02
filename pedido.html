@@ -5,17 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="icon/hotdog.png">
-    <link rel="stylesheet" href="src/request.css">
+    <link rel="stylesheet" href="src/style.css">
     <script src="src/script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script type="text/javascript" src="checkout/js/index.js" defer></script>
     <title>Dog no Molho</title>
 
 
-      <!-- CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9.1.1/modules/scrollbar/scrollbar.min.css"
-     integrity="sha256-BOj/w0BvD88/C7Dd47erg7DyPELqL+5oeet5icjg+P8=" crossorigin="anonymous">
+
+     <!-- Hidden input to store your integration public key -->
+     <input type="hidden" id="mercado-pago-public-key" value="{{APP_USR-90a36cb4-b64d-42b8-8f48-e2de79e7dcaf}}">
 
 </head>
 <body class="body">
@@ -30,76 +35,46 @@
     </div>
     <nav class="nav">
         <ul class="nav-links">
-          <li><a href="index.html"id="cancel">DOGS</a></li>
-          <li><a href="drinks.html"id="cancel">BEBIDAS</a></li>
-          <li><a href="atendimento.html" id="cancel">ATENDIMENTO</a></li>
-          <li><a href="pedido.html" class="active" id="move">PEDIDO</a></li>
+            <li><a href="index.html" id="cancel">DOGS</a></li>
+            <li><a href="drinks.html" id="cancel">BEBIDAS</a></li>
+            <li><a href="pedido.html" class="active">PEDIDO</a></li>
     
         </ul>
     </nav>
 
-    <img src="img/User.png" alt="" class="profile">
 
+
+      <img src="img/User.png" alt="" class="profile">
+      
+      <a href="pedido.html">
+      <i class='bx bx-cart carrinho'></i>
+      <span class="qtdcarrinho"></span>
+      </a>
 </header>
 
 <main>
-  <div class="container">
-    <div class="swiper-wrapper">
-      <div class="card-wrapper">
-        <!-- 1 CARD -->
-        <div class="MENU">
-          <div class="items">
-            <h2 class="name2">CARRINHO DE COMPRAS (2)</h2>
-          </div>
-          <div class="check">
-            <input type="checkbox"/>SELECIONAR TODOS OS ITENS
-          </div>
-        </div>
-        <!-- 2 CARD -->
-        <div class="QTD">
-          <div class="items">
-            <h2 class="name2">TOTAL</h2>
-          </div>
-          <div class="check">
-            <p>Total:</p>
-          </div>
-      </div>
-      <!-- 3 CARD -->
-      <div class="payments">
-        <div class="items">
-          <h2 class="name2">Métodos de pagamento</h2>
-        </div>
-        <div class="images">
-          <img src="img/mastercard.png" alt="" class="card-img">
-          <img src="img/visa.png" alt="" class="card-img">
-          <img src="img/elo.png" alt="" class="card-img">
-          <img src="img/pix.png" alt="" class="card-img">
-          <img src="img/boleto.png" alt="" class="card-img">
-        </div>
-  </div>
-  
-              <!-- 3 CARD 
-              <div class="card">
-                <div class="image-content">
-                  <span class="overlay"></span>
-                  <div class="card-image">
-                    <img src="img/bebidas.png" alt="" class="card-img">
-                  </div>
-                </div>
-                <div class="card-content">
-                  <div class="name-price">
-                    <h2 class="name">Refrigerante Lata</h2>
-                    <span class="price">R$6,00</span>
-                  </div>
-                  <p class="desc">Lorem ipsum dolor sit amet consectetur. Tincidunt proin arcu egestas vel elit sem felis donec iaculis. Lectus feugiat donec.</p>
-                  <button class="button">Ver Mais</button>
-                </div>
-              </div>
-           
-          </div>-->
-
-
+    <div class="container">
+      <table class="products-container">
+        <thead>
+          <tr class="products-header">
+            <th class="product-title">PRODUTO</th>
+            <th class="pricer">PREÇO</th>
+            <th class="quantity">QUANTIDADE</th>
+            <th class="totalizacao">TOTAL</th>
+          </tr>
+        </thead>
+        <tbody class="products">
+        </tbody>
+       
+      </table>
+      
+      <a href="checkout.html">
+      <button id="pagar" type="submit" href="checkout.html">Fazer pagamento</button>
+    </a>
+     
+    
   </main>
+  
   
 <!-- BOTTOM NAVIGATION - MOBILE -->
 <div class="menubar">
@@ -115,6 +90,7 @@
           <a href="pedido.html" class="nav_link">
               <i class='bx bx-cart nav_icon' ></i>
               <span class="nav_name">PEDIDO</span>
+              <span class="qtdcart"></span>
           </a>
       </li>
 
@@ -126,6 +102,7 @@
       </li>
   </ul>
 </div>
+
     
 <footer></footer>
 

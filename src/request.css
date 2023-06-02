@@ -177,22 +177,18 @@ main {
 }
 
 .MENU {
-  position: relative;
-  top: -20px;
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-  width: calc((100% - 10px) / 1);
-  background-color: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-  height: 200px;
-  flex-shrink: 0; /* Impede que a imagem seja encolhida */
-  transition: 0.3s;
-  
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    width: calc((100% - 10px) / 1);
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    height: 200px;
+    flex-shrink: 0; /* Impede que a imagem seja encolhida */
+    transition: 0.3s;
 }
-
 
 .items {
     margin: 20px;
@@ -215,12 +211,10 @@ main {
 
 
   .QTD {
-    position: relative;
-    top: -20px;
-    margin: 5px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
-    width: calc((100% - 100px) / 2);
+    width: calc((100% - 300px) / 1);
     background-color: #fff;
     border-radius: 20px;
     overflow: hidden;
@@ -231,32 +225,10 @@ main {
 }
 
 .total {
-  margin: 20px;
-  text-align: left;
-  padding-left: 7%;
-  display: flex;
+    align-items: center;
+    display: flex;
+
   }
-
-.text {
-  text-align: left;
-  padding-left: 10%;
-}
-
-.payments {
-  position: relative;
-  margin: 5px;
-  top: -20px;
-  display: flex;
-  flex-direction: column;
-  width: calc((100% - 100px) / 2);
-  background-color: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-  height: 200px;
-  flex-shrink: 0; /* Impede que a imagem seja encolhida */
-  transition: 0.3s;
-}
 
 
 /* configuração dos cards dos produtos */
@@ -636,16 +608,10 @@ a {
 
 .nav_icon {
   font-size: 1.5rem;
+  order: -1; /* Reordenar o ícone acima do nome */
 }
 
-#move {
-  right: 60%;
-}
   
-/* Retira o menu "Atendimento" no mobile (Ele vai para a Bottom Navigation) */
-#cancel {
-  display: none;
-}
 
 }
 

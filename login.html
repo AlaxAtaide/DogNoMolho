@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOG NO MOLHO</title>
+  <link rel="shortcut icon" type="image/x-icon" href="icon/hotdog.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" type="text/css" href="src/styleLogin.css">
+</head>
+<body>
+  <div class="container">
+    <div class="circle-container">
+      <div class="circle"></div>
+    </div>
+    <div class="login-container">
+      <h1>LOGIN</h1>
+      <form id="login-form">
+        <div class="input-container">
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" placeholder="Digite seu nome..." required>
+        </div>
+       <div class="input-container">
+        
+          <input type="text" id="password" placeholder="Número de celular" required>
+          <i class="fa-solid fa-phone"></i>
+        </div>
+     
+        <p class="forgot-password">Não tem login? <a href="#">Clique aqui</a></p>
+        <button id="login-button" type="submit">Entrar</button>
+        
+      </form>
+    </div>
+    <div class="transition-overlay"></div>
+  </div>
+
+  <script src="src/scriptLogin.js"></script>
+  <img src="img/car.png" alt="Carro" class="car-image">
+</body>
+</html>
