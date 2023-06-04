@@ -165,6 +165,41 @@ button:hover {
   color: #ff5e00;
 }
 
+.menu-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 50px; /* Defina a altura desejada para o menubar */
+  background-color: transparent;
+}
+
+.menu-bar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Torna a lista horizontal */
+  justify-content: flex-end; /* Alinha os itens à direita */
+  align-items: center; /* Centraliza verticalmente os itens */
+  height: 100%; /* Preenche a altura do menubar */
+}
+
+.menu-bar li {
+  margin-right: 20px; /* Adicione espaçamento entre os itens */
+}
+
+.menu-bar a {
+  text-decoration: none;
+  color: #444444;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.menu-bar a:hover {
+  background-color: #f2f2f2;
+}
 
 /* Restante do código CSS... */
 @media only screen and (max-width: 600px) {

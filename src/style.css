@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,500;0,600;1,700&display=swap');
 
-/* Tira a margem default da página"*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
-
 }
 
 body {
@@ -14,18 +12,15 @@ body {
   transition: background 0.5s;
 }
 
-/* ----------------------- CART PAGE ----------------------- */
 .products-container {
   width: 100%;
   max-width: 850px;
   margin: 0 auto;
-  
 }
 
 .products-container ion-icon {
   cursor: pointer;
   color: blue;
-
 }
 
 .products-header {
@@ -50,7 +45,6 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  
 }
 
 .product-info img {
@@ -61,15 +55,12 @@ body {
   border-radius: 10%;
 }
 
-
 .product-info .product-name {
   text-align: center;
   font-weight: 600;
   margin: 0 10px;
   flex: 1;
 }
-
-
 
 .product-details {
   display: flex;
@@ -118,40 +109,32 @@ body {
   cursor: pointer;
 }
 
-
-
-
-
-
-/* Cria o perfil de usuário acima do header final"*/
 .profile {
-  width: 3vh; 
-  height: 3vh; 
+  width: 3vh;
+  height: 3vh;
   position: absolute;
   top: 2vh;
-  left: 96vw;
+  right: 4vh;
   border-radius: 50%;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
 }
 
 .carrinho {
   position: absolute;
-  top: 2%;
-  right: 4%;
+  top: 2vh;
+  right: 10vh;
   font-size: 1.6em;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-
-
 }
 
 .qtdcarrinho {
   position: absolute;
-  top: 1.5%;
-  right: 3.6%;
+  top: 1.5vh;
+  right: 9vh;
   background-color: #ff0000;
   color: #fff;
   width: 15px;
@@ -160,7 +143,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 80%;
+  font-weight: bold;
+}
+
+.LoginButton {
+  position: absolute;
+  cursor: pointer;
+  top: 2vh;
+  right: 15vh;
+  font-size: 1em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
 }
 
@@ -621,9 +617,7 @@ button:hover {
     height: 5%;
     width: 100%;
   }
-  
-  
-  
+
   .card-img {
     object-fit: cover;
     height: 100%;
@@ -676,19 +670,9 @@ button:hover {
     transform: scale3d(1.1, 1.1, 1);
   }
 
-  .profile {
-    width: 3vh; 
-    height: 3vh; 
-    position: absolute;
-    top: 2vh;
-    left: 90vw;
-    border-radius: 50%;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
-  }
+
 
  
-
-
   /* BOTTOM NAVIGATION - MOBILE */
 
 ul {
@@ -744,12 +728,20 @@ a {
   font-size: .725rem;
 }
 
+.carrinho {
+  visibility: hidden;
+}
+
+.qtdcarrinho {
+  display: none;
+}
+
 /* classe que gera o circulo vermelho para a qtd de produto no carrinho */
 .qtdcart {
   visibility: hidden; /* Inicia com visibility:hidden para ficar invisível */
   position: absolute;
   top: 1px;
-  right: 180px;
+  right: 225px;
   background-color: #ff0000;
   color: #fff;
   width: 15px;
@@ -761,10 +753,6 @@ a {
   font-size: 12px;
   font-weight: bold;
 }
-
-
-
-
 
 
 

@@ -92,43 +92,54 @@ let productData = {
     })
   }
 
-    // Função para atualizar o número de itens no carrinho quando a página é carregada
+  // Função para atualizar o número de itens no carrinho quando a página é carregada
   function onLoadCartNumbers() {
-    let productNumbers = localStorage.getItem('cartNumbers');  
+    let productNumbers = localStorage.getItem('cartNumbers');
+
     // Verifica se há itens no carrinho no localStorage
     if (productNumbers) {
       document.querySelector('.qtdcart').textContent = productNumbers;
+      document.querySelector('.qtdcarrinho').textContent = productNumbers;
 
-
-    // Atualiza a visibilidade do elemento .qtdcart
-    if (parseInt(productNumbers) > 0) {
-      document.querySelector('.qtdcart').style.visibility = 'visible';
-    } else {
-      document.querySelector('.qtdcart').style.visibility = 'hidden';
-    }
+      // Atualiza a visibilidade do elemento .qtdcart e .qtdcarrinho
+      if (parseInt(productNumbers) > 0) {
+        document.querySelector('.qtdcart').style.visibility = 'visible';
+        document.querySelector('.qtdcarrinho').style.visibility = 'visible';
+      } else {
+        document.querySelector('.qtdcart').style.visibility = 'hidden';
+        document.querySelector('.qtdcarrinho').style.visibility = 'hidden';
+      }
     }
   }
+
+  // Chama a função onLoadCartNumbers() para atualizar a contagem de itens no carrinho
+  onLoadCartNumbers();
+
   
   function cartNumbers(product) {
-    
     let productNumbers = localStorage.getItem('cartNumbers');
-
-    productNumbers = parseInt(productNumbers)
-
+    productNumbers = parseInt(productNumbers);
+  
     if (productNumbers) {
       localStorage.setItem('cartNumbers', productNumbers + 1);
       document.querySelector('.qtdcart').textContent = productNumbers + 1;
+      document.querySelector('.qtdcarrinho').textContent = productNumbers + 1; // Adiciona esta linha para atualizar também a classe .qtdcarrinho
     } else {
       localStorage.setItem('cartNumbers', 1);
       document.querySelector('.qtdcart').textContent = 1;
+      document.querySelector('.qtdcarrinho').textContent = 1; // Adiciona esta linha para atualizar também a classe .qtdcarrinho
     }
-
-    // Atualiza a visibilidade do elemento .qtdcart
+  
+    // Atualiza a visibilidade do elemento .qtdcart e .qtdcarrinho
     if (parseInt(localStorage.getItem('cartNumbers')) > 0) {
       document.querySelector('.qtdcart').style.visibility = 'visible';
+      document.querySelector('.qtdcarrinho').style.visibility = 'visible'; // Adiciona esta linha para atualizar também a classe .qtdcarrinho
     } else {
       document.querySelector('.qtdcart').style.visibility = 'hidden';
+      document.querySelector('.qtdcarrinho').style.visibility = 'hidden'; // Adiciona esta linha para atualizar também a classe .qtdcarrinho
     }
+  
+  
 
     setItems(product);
 
@@ -311,7 +322,7 @@ let productData = {
       event.target.parentElement.parentElement.remove();
   
       document.querySelector(".qtdcart").textContent = Math.max(0, updatedProductNumbers);
-  
+      document.querySelector(".qtdcarrinho").textContent = Math.max(0, updatedProductNumbers);
       displayCart(); // Atualiza a exibição do carrinho
   
       // Atualiza o valor total do carrinho após a remoção do item
