@@ -43,49 +43,53 @@ passwordInput.addEventListener('input', function(event) {
   
 });
 
+const http = require('http')
 
+const server = http.createServer()
 
+server.listen(3001, 'localhost', () => {
+  console.log('Servidor de pé em: http://localhost:3001')
+});
+//Importe a biblioteca do Twilio
+const twilio = require('twilio');
 
-// // Importe a biblioteca do Twilio
-// const twilio = require('twilio');
+// Configure as credenciais do Twilio
+const accountSid = 'AC1a4328be6f04cdd38980db483e1d9182';
+const authToken = 'ee10543b790b1144b0ef1fef19ca4109';
+const client = new twilio(accountSid, authToken);
 
-// // Configure as credenciais do Twilio
-// const accountSid = 'AC1a4328be6f04cdd38980db483e1d9182';
-// const authToken = 'ee10543b790b1144b0ef1fef19ca4109';
-// const client = new twilio(accountSid, authToken);
+// Função para gerar um código de confirmação
+function generateConfirmationCode() {
+  // Implemente a lógica para gerar o código de confirmação aqui
+  // Por exemplo, você pode usar uma biblioteca de geração de números aleatórios
+  return '123456'; // Código de exemplo
+}
 
-// // Função para gerar um código de confirmação
-// function generateConfirmationCode() {
-//   // Implemente a lógica para gerar o código de confirmação aqui
-//   // Por exemplo, você pode usar uma biblioteca de geração de números aleatórios
-//   return '123456'; // Código de exemplo
-// }
+// Evento de envio do formulário
+document.getElementById('login-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Impede o envio do formulário padrão
 
-// // Evento de envio do formulário
-// document.getElementById('login-form').addEventListener('submit', function(event) {
-//   event.preventDefault(); // Impede o envio do formulário padrão
+  // Obtenha o número de telefone digitado pelo usuário
+  const phoneNumber = document.getElementById('password').value;
 
-//   // Obtenha o número de telefone digitado pelo usuário
-//   const phoneNumber = document.getElementById('password').value;
+  // Gerar um código de confirmação
+  const confirmationCode = generateConfirmationCode();
 
-//   // Gerar um código de confirmação
-//   const confirmationCode = generateConfirmationCode();
+  // Enviar o código de confirmação via SMS
+  client.messages.create({
+    body: `Seu código de confirmação é: ${confirmationCode}`,
+    from: '+13613100829',
+    to: phoneNumber
+  })
+  .then(message => {
+    // Código executado quando a mensagem é enviada com sucesso
+    console.log('Mensagem enviada com sucesso:', message.sid);
 
-//   // Enviar o código de confirmação via SMS
-//   client.messages.create({
-//     body: `Seu código de confirmação é: ${confirmationCode}`,
-//     from: '+13613100829',
-//     to: phoneNumber
-//   })
-//   .then(message => {
-//     // Código executado quando a mensagem é enviada com sucesso
-//     console.log('Mensagem enviada com sucesso:', message.sid);
-
-//     // Redirecionar para a página de confirmação
-//     window.location.href = 'confirm.html';
-//   })
-//   .catch(error => {
-//     // Código executado quando ocorre um erro no envio da mensagem
-//     console.error('Erro ao enviar a mensagem:', error);
-//   });
-// });
+    // Redirecionar para a página de confirmação
+    window.location.href = 'confirm.html';
+  })
+  .catch(error => {
+    // Código executado quando ocorre um erro no envio da mensagem
+    console.error('Erro ao enviar a mensagem:', error);
+  });
+});

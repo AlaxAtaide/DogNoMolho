@@ -569,6 +569,155 @@ button:hover {
   background-color: #ff5e00;
 }
 
+/* SESSÃO DO MAPA - INICIO */
+.titulo-principal {
+
+	text-align: center;
+	font-size: 2em;
+	clear: left;
+}
+
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.titulo-principal p {
+	margin: 0 0 5em;
+}
+
+.principal strong {
+	font-weight: bold;
+}
+
+.principal em {
+	font-style: italic;
+}
+.mapa {
+  margin-top: 5em;
+  text-align: center;
+}
+
+
+/* SESSÃO DO MAPA - FIM */
+
+
+/* PERGUNTAS FREQUENTES - INICIO CSS */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px; /* ou qualquer valor apropriado */
+}
+
+
+.FAQ {
+  margin-top: 2em;
+  text-align: center;
+}
+
+
+.FAQ h1 {
+
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 2rem;
+}
+
+
+
+.question {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #ffffff;
+
+  border-radius: 1rem;
+  padding: 1rem;
+  border-bottom: 2px solid #bb4a36;
+}
+
+.question-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  background: linear-gradient(to bottom, rgb(255, 153, 0), rgb(255, 102, 0)); 
+  width: 100%;
+  display: flex;
+  padding: 1rem 0;
+}
+
+.question-link ion-icon {
+  color: #e7d5ff;
+  padding: .5rem;
+}
+
+.question-link .remove-outline {
+  display: none;
+}
+
+.answer {
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  background-color: #e9e9e9;
+  /* transition: max-height 1.4s ease; */
+  /* transition: max-height 650ms; */
+
+}
+
+
+.answer::before {
+  content: "";
+  position: absolute;
+  width: .6rem;
+  height: 90%;
+  background-color: #ff5e00;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+}
+
+.answer p {
+  color: rgb(0, 0, 0);
+  font-size: 1.4rem;
+  padding: 2rem;
+}
+
+.question:target .answer {
+  max-height: 20rem;
+}
+
+
+.question:target .question-link .add-outline {
+  display: none;
+}
+
+.question:target .question-link .remove-outline {
+  display: block;
+
+}
+
+/* PERGUNTAS FREQUENTES - FIM CSS*/
+
+
+
+
+
+
+.copyright {
+  padding: 2%;
+  color: white;
+
+}
+
 /* Media query para dispositivos móveis */
 @media (max-width: 767px) {
 
