@@ -31,8 +31,10 @@ body {
 .pricer,
 .quantity,
 .totalizacao {
+  word-break: normal;
   padding: 10px;
   text-align: center;
+
 }
 
 .products td {
@@ -322,7 +324,7 @@ main {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-  height: 400px;
+  height: 450px;
   flex-shrink: 0; /* Impede que a imagem seja encolhida */
   transition: 0.3s;
 }
@@ -578,66 +580,69 @@ button:hover {
 }
 
 
+
+
+        /* INICIO CSS do MAPA */
+
+/* Define o tamanho máximo para o mapa */
+.mapa iframe {
+  max-width: 100%;
+}
+
+/* Alinha o conteúdo do FAQ ao centro */
 .container2 {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.titulo-principal p {
-	margin: 0 0 5em;
-}
 
-.principal strong {
-	font-weight: bold;
-}
-
-.principal em {
-	font-style: italic;
-}
 .mapa {
   margin-top: 5em;
+  margin-bottom: 2em; /* Adiciona espaço abaixo do mapa */
   text-align: center;
 }
 
+.mapa p {
+  margin-bottom: 2em; /* Adiciona espaço acima do parágrafo */
+}
 
-/* SESSÃO DO MAPA - FIM */
+/* FIM CSS do MAPA */
 
+            /* INICIO ACCORDION */
 
-/* PERGUNTAS FREQUENTES - INICIO CSS */
-
+/* Alinha o conteúdo principal ao centro */
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px; /* ou qualquer valor apropriado */
+  margin-bottom: 50px;
+  
 }
 
-
+/* Ajusta a margem superior das perguntas frequentes */
 .FAQ {
   margin-top: 2em;
-  text-align: center;
 }
 
-
+/* Ajusta o tamanho do título das perguntas frequentes */
 .FAQ h1 {
-
-  color: rgb(0, 0, 0);
   text-align: center;
   padding: 2rem;
 }
 
-
-
+/* Ajusta o tamanho da largura das perguntas */
 .question {
-  width: 50%;
+  width: min(80%, 920px); /* Define a largura como 80% ou 920px, o que for menor */
   margin: 0 auto;
   background-color: #ffffff;
-
   border-radius: 1rem;
   padding: 1rem;
   border-bottom: 2px solid #bb4a36;
 }
 
+
+
+/* Ajusta o estilo do link da pergunta */
 .question-link {
   display: flex;
   align-items: center;
@@ -647,32 +652,32 @@ main {
   text-align: center;
   text-decoration: none;
   border-radius: 0.5rem;
-  background: linear-gradient(to bottom, rgb(255, 153, 0), rgb(255, 102, 0)); 
+  background: linear-gradient(to bottom, rgb(255, 153, 0), rgb(255, 102, 0));
   width: 100%;
   display: flex;
   padding: 1rem 0;
 }
 
+/* Ajusta o estilo do ícone na pergunta */
 .question-link ion-icon {
   color: #e7d5ff;
   padding: .5rem;
 }
 
+/* Ajusta o estilo do ícone "abrir" na pergunta */
 .question-link .remove-outline {
   display: none;
 }
 
+/* Ajusta o estilo da resposta */
 .answer {
   max-height: 0;
   overflow: hidden;
   position: relative;
   background-color: #e9e9e9;
-  /* transition: max-height 1.4s ease; */
-  /* transition: max-height 650ms; */
-
 }
 
-
+/* Ajusta o estilo do marcador antes da resposta */
 .answer::before {
   content: "";
   position: absolute;
@@ -682,44 +687,79 @@ main {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-
 }
 
+/* Ajusta o estilo do texto na resposta */
 .answer p {
   color: rgb(0, 0, 0);
   font-size: 1.4rem;
   padding: 2rem;
 }
 
+/* Define a altura máxima da resposta quando estiver aberta */
 .question:target .answer {
   max-height: 20rem;
 }
 
-
+/* Altera a visibilidade dos ícones "abrir" e "fechar" na pergunta */
 .question:target .question-link .add-outline {
   display: none;
 }
 
 .question:target .question-link .remove-outline {
   display: block;
-
 }
+
+/* Estilos adicionais para tornar o menu inferior responsivo */
+
+/* Remove os pontos do menu inferior */
+.menubar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Alinha os itens do menu inferior no centro */
+.nav_list {
+  display: flex;
+  justify-content: center;
+}
+
+/* Ajusta o espaçamento dos itens do menu inferior */
+.navigator {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Reduz o tamanho dos ícones no menu inferior */
+.nav_icon {
+  font-size: 1.6rem;
+}
+
+/* Ajusta o tamanho da fonte do nome do menu inferior */
+.nav_name {
+  font-size: 1rem;
+}
+
+
 
 /* PERGUNTAS FREQUENTES - FIM CSS*/
+      /* FIM ACCORDION */
 
-
-
-
-
-
-.copyright {
-  padding: 2%;
-  color: white;
-
-}
-
+      .footer {
+        background-color: #ff0000;
+        color: white;
+        text-align: center;
+      }
+      
+      
 /* Media query para dispositivos móveis */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+
+  .header-container {
+    flex-direction: column;
+  }
 
   .logo-and-search {
     flex-direction: column;
@@ -861,7 +901,9 @@ a {
 
 
 .container {
-  overflow: auto; 
+    overflow-x: hidden;
+
+  
 }
 
 .nav_link {
