@@ -3,13 +3,16 @@
 <head>
   <title>Checkout Transparente MercadoPago</title>
   <script src="https://sdk.mercadopago.com/js/v2"></script>
-  <link rel="stylesheet" href="src/checkout.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <link rel="stylesheet" href="src/checkout.css">
 </head>
-<body>
+<!-- //DADOS PARA TESTE DE MÉTODO DE PAGAMENTO:
 
+//    Mastercard -    N°: 5031 4332 1540 6351 - CPF: 12345678909 - CVV: 123  -  MM/YY: 11/25 
+// American Express - N°: 5031 4332 1540 6351 - CPF: 12345678909 - CVV: 1234 -  MM/YY: 11/25 
+//       VISA -       N°: 4235 6477 2802 5682 - CPF: 12345678909 - CVV: 123  -  MM/YY: 11/25  -->
+<body>
 
   <form id="form-checkout">
     <h1>Cartão de Crédito</h1>
@@ -30,120 +33,7 @@
     
   </form>
 
+  <script src="src/script.js"></script>
 
-  <script>
-    //DADOS PARA TESTE DE MÉTODO DE PAGAMENTO:
-
-    //    Mastercard -    N°: 5031 4332 1540 6351 - CPF: 12345678909 - CVV: 123  -  MM/YY: 11/25 
-    // American Express - N°: 5031 4332 1540 6351 - CPF: 12345678909 - CVV: 1234 -  MM/YY: 11/25 
-    //       VISA -       N°: 4235 6477 2802 5682 - CPF: 12345678909 - CVV: 123  -  MM/YY: 11/25 
-
-    const mp = new MercadoPago("APP_USR-0b4554de-0cd1-40b7-8222-427fcd0ba50e");
-
-    //FORMATA O CPF AUTOMÁTICO AO USUÁRIO DIGITAR
-    $(document).ready(function() {
-    $('#form-checkout__identificationNumber').mask('000.000.000-00');
-    });
-
-
-    const cardForm = mp.cardForm({
-      amount: "100.5",
-      iframe: true,
-      form: {
-        id: "form-checkout",
-        cardNumber: {
-          id: "form-checkout__cardNumber",
-          placeholder: "Número do cartão",
-        },
-        expirationDate: {
-          id: "form-checkout__expirationDate",
-          placeholder: "MM/YY",
-        },
-        securityCode: {
-          id: "form-checkout__securityCode",
-          placeholder: "CVV",
-        },
-        cardholderName: {
-          id: "form-checkout__cardholderName",
-          placeholder: "Nome completo do Titular",
-        },
-        issuer: {
-          id: "form-checkout__issuer",
-          placeholder: "Banco emissor",
-        },
-        installments: {
-          id: "form-checkout__installments",
-          placeholder: "Número de parcelas",
-        },
-        identificationNumber: {
-          id: "form-checkout__identificationNumber",
-          placeholder: "Digite seu CPF",
-        },
-      },
-      callbacks: {
-        onFormMounted: (error) => {
-          if (error) return console.warn("Form Mounted handling error: ", error);
-          console.log("Form mounted");
-        },
-        onSubmit: (event) => {
-          event.preventDefault();
-
-          
-
-          const {
-            paymentMethodId: payment_method_id,
-            issuerId: issuer_id,
-            cardholderEmail: email,
-            amount,
-            token,
-            installments,
-            identificationNumber,
-            identificationType,
-          } = cardForm.getCardFormData();
-
-          fetch("/process_payment", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              token,
-              issuer_id,
-              payment_method_id,
-              transaction_amount: Number(amount),
-              installments: Number(installments),
-              description: "Product Description",
-              payer: {
-                email,
-                identification: {
-                  type: identificationType,
-                  number: identificationNumber,
-                },
-              },
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log("Payment response:", data);
-              // Faça algo com a resposta do pagamento
-            })
-            .catch((error) => {
-              console.error("Payment error:", error);
-            });
-        },
-        onFetching: (resource) => {
-          console.log("Fetching resource: ", resource);
-
-          // Animate progress bar
-          const progressBar = document.querySelector(".progress-bar");
-          progressBar.removeAttribute("value");
-
-          return () => {
-            progressBar.setAttribute("value", "0");
-          };
-        },
-      },
-    });
-  </script>
 </body>
 </html>

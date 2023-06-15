@@ -40,36 +40,37 @@ modalCartaoButton.addEventListener("click", function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-   // Função para carregar o conteúdo da página de checkout no modal
-   function loadCheckoutModal() {
-    var modalContainer = document.getElementById('modalContainer');
 
-    // Cria um elemento iframe
-    var iframe = document.createElement('iframe');
-    iframe.src = 'CheckoutCart.html';
-    iframe.frameBorder = '0';
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
 
-    // Adiciona o iframe ao container modal
-    modalContainer.appendChild(iframe);
+// Adicione este código abaixo do código existente no seu arquivo JavaScript
 
-    // Exibe o modal
-    modalContainer.style.display = 'block';
-  }
+// Função para carregar e exibir o conteúdo de CheckoutCart.html dentro do modal
+function openCheckoutModal() {
+  const modalContent = document.getElementById("modal-content");
 
-  // Função para fechar o modal
-  function closeCheckoutModal() {
-    var modalContainer = document.getElementById('modalContainer');
+  fetch("CheckoutCart.html")
+    .then((response) => response.text())
+    .then((data) => {
+      modalContent.innerHTML = data;
+      // Exibir o modal
+      openModal();
+    })
+    .catch((error) => {
+      console.error("Error loading CheckoutCart.html:", error);
+    });
+}
 
-    // Remove o conteúdo do modal
-    modalContainer.innerHTML = '';
+// Função para exibir o modal
+function openModal() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "block";
+}
 
-    // Oculta o modal
-    modalContainer.style.display = 'none';
-  }
+// Adicione um evento de clique aos métodos de pagamento existentes
+const paymentOptions = document.querySelectorAll(".payment-option");
+paymentOptions.forEach((option) => {
+  option.addEventListener("click", openCheckoutModal);
+});
 
-  // Adiciona o evento de clique ao botão de modal-cartao
-  var modalCartaoButton = document.getElementById('modal-cartao');
-  modalCartaoButton.addEventListener('click', loadCheckoutModal);
+
 });
