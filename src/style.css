@@ -81,7 +81,7 @@ body {
 
 .total {
   font-weight: bold;
-  width: 10%;
+
   text-align: center;
 }
 
@@ -459,7 +459,7 @@ main {
 }
 
 
-/* Propriedades do botão "Ver Mais" */
+/* Propriedades do botão "FAZER PEDIDO" */
 .button {
   border: none;
   font-size: 16px;
@@ -753,6 +753,113 @@ main {
         text-align: center;
       }
       
+
+ /* OPTIONS CHECKOUT   */
+ 
+
+ /* Estilo dos retângulos de opções de pagamento */
+ .payment-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  background-color: #eee;
+  padding: 10px;
+  border-radius: 4px;
+  flex: 1; /* Ocupar espaço disponível */
+  margin-right: 1%; /* Espaçamento entre os retângulos de opções */
+}
+
+.payment-option i {
+  margin-right: 5px;
+}
+
+.payment-option span {
+  font-weight: bold;
+}
+
+/* TELA MODAL OPÇÕES DE PAGAMENTO */
+
+#checkout-iframe {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Alterado de 80% para 90% */
+  max-width: 600px; /* Alterado de 800px para 600px */
+  height: 80%; /* Alterado de 60% para 80% */
+  max-height: 550px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.fechar {
+  color: #aaa;
+  float: right;
+  top: 10%;
+  right: 5%;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.fechar:hover,
+.fechar:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.modal-content h2 {
+  margin-bottom: 2%;
+}
+
       
 /* Media query para dispositivos móveis */
 @media (max-width: 768px) {
@@ -860,7 +967,9 @@ main {
   }
 
 
-
+.suportedesk{
+  display: none;
+}
  
   /* BOTTOM NAVIGATION - MOBILE */
 
@@ -929,19 +1038,16 @@ a {
 
 /* classe que gera o circulo vermelho para a qtd de produto no carrinho */
 .qtdcart {
-  visibility: hidden; /* Inicia com visibility:hidden para ficar invisível */
   position: absolute;
-  top: 1px;
-  right: 225px;
+  right: 45vw;
   background-color: #ff0000;
   color: #fff;
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 80%;
   font-weight: bold;
 }
 
@@ -960,6 +1066,66 @@ right: 20%;
   display: none;
 }
 
+.products-container {
+  display: block;
+}
+
+.products-container thead,
+.products-container tbody,
+.products-container tr,
+.products-container th,
+.products-container td {
+  display: block;
+  justify-content: center;
+}
+
+.products-header {
+  display: none;
+}
+
+.products-header th {
+  display: none;
+}
+
+.products tr {
+  margin-bottom: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.products td {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+
+}
+
+.product-title,
+.mobile-price,
+.quantity,
+.totalizacao {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.total {
+  font-weight: bold;
+  text-align: center;
+}
+
+.close {
+  font-size: 1.5rem;
+  padding-left: 40vh;
+  cursor: pointer;
+}
+
+
+#pagar {
+margin-bottom: 4%;
+}
 }
 
 

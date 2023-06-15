@@ -7,6 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="icon/hotdog.png">
     <link rel="stylesheet" href="src/style.css">
     <script src="src/script.js"></script>
+    <script src="src/pagamentos.js"></script>
+    <script src="src/checkout.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -37,7 +39,7 @@
         <ul class="nav-links">
             <li><a href="index.html" id="cancel">DOGS</a></li>
             <li><a href="drinks.html" id="cancel">BEBIDAS</a></li>
-            <li><a href="atendimento.html">SUPORTE</a></li>
+            <li><a href="atendimento.html" class="suportedesk">SUPORTE</a></li>
             <li><a href="pedido.html" class="active">PEDIDO</a></li>
     
         </ul>
@@ -57,10 +59,12 @@
 
 <main>
     <div class="container">
+    <div class="table-container">
+    <div class="table-wrapper">
       <table class="products-container">
         <thead>
           <tr class="products-header">
-            <th class="product-title">PRODUTO</th>
+            <th class="product-title ">PRODUTO</th>
             <th class="pricer">PREÇO</th>
             <th class="quantity">QUANTIDADE</th>
             <th class="totalizacao">TOTAL</th>
@@ -70,11 +74,48 @@
         </tbody>
        
       </table>
+      </div>
+      </div>
+      </div>
+
+      <button id="pagar" type="submit" >Fazer pagamento</button>
+
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <h2>Escolha uma opção de pagamento:</h2>
+          <div class="payment-options">
+            <div class="payment-option" onclick="openCheckoutModal('')">
+              <i class="fa-solid fa-credit-card"></i>
+              <span>Cartão de crédito</span>
+            </div>
+            <div class="payment-option" onclick="openCheckoutModal('Cartão de débito')">
+              <i class="fa-regular fa-credit-card"></i>
+              <span>Cartão de débito</span>
+            </div>
+            <div class="payment-option" onclick="openCheckoutModal('PIX')">
+              <i class="fa-brands fa-pix"></i>
+              <span>PIX</span>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+         
+          <h2 id="selected-payment-method"></h2>
+          <iframe id="checkout-iframe" frameborder="0"></iframe>
+        </div>
+      </div>
+      
+      
+      
+      
       
 
-      <button id="pagar" type="submit" onclick="window.location.href='checkout.html'">Fazer pagamento</button>
+</div>
 
-     
     
   </main>
   

@@ -37,8 +37,6 @@ window.addEventListener('load', () => {
 });
 
 
-
-
 // INICIO DO BACK-END DO SITE
 
 // CARRINHO DE COMPRA (SHOPPING CAR)
@@ -187,6 +185,7 @@ let productData = {
     if (cartTotal) {
       cartTotal.textContent = `R$ ${localStorage.getItem('custoTotal')},00`;
     }
+    
   }
   
 
@@ -359,5 +358,123 @@ let productData = {
   // Chama a função para exibir o custo total inicialmente
   updateCostTotal();
 
-  
+
+
 });  
+
+  // CÓDIGO DO MERCADO PAGO - INTEGRAÇÃO (CHECKOUT TRANSPARENTE)
+  let custoTotal = localStorage.getItem('custoTotal');
+
+document.addEventListener('DOMContentLoaded', () => {
+  const mp = new MercadoPago("APP_USR-0b4554de-0cd1-40b7-8222-427fcd0ba50e");
+
+  //FORMATA O CPF AUTOMÁTICO AO USUÁRIO DIGITAR
+  $(document).ready(function() {
+  $('#form-checkout__identificationNumber').mask('000.000.000-00');
+  });
+  
+  
+  const cardForm = mp.cardForm({
+    amount: custoTotal,
+    iframe: true,
+    form: {
+      id: "form-checkout",
+      cardNumber: {
+        id: "form-checkout__cardNumber",
+        placeholder: "Número do cartão",
+      },
+      expirationDate: {
+        id: "form-checkout__expirationDate",
+        placeholder: "MM/YY",
+      },
+      securityCode: {
+        id: "form-checkout__securityCode",
+        placeholder: "CVV",
+      },
+      cardholderName: {
+        id: "form-checkout__cardholderName",
+        placeholder: "Nome completo do Titular",
+      },
+      issuer: {
+        id: "form-checkout__issuer",
+        placeholder: "Banco emissor",
+      },
+      installments: {
+        id: "form-checkout__installments",
+        placeholder: "Número de parcelas",
+      },
+      identificationNumber: {
+        id: "form-checkout__identificationNumber",
+        placeholder: "Digite seu CPF",
+      },
+      
+    },
+    callbacks: {
+      onFormMounted: (error) => {
+        if (error) return console.warn("Form Mounted handling error: ", error);
+        console.log("Form mounted");
+      },
+      onSubmit: (event) => {
+        event.preventDefault();
+  
+        
+  
+        const {
+          paymentMethodId: payment_method_id,
+          issuerId: issuer_id,
+          cardholderEmail: email,
+          amount,
+          token,
+          installments,
+          identificationNumber,
+          identificationType,
+        } = cardForm.getCardFormData();
+  
+        fetch("/process_payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token,
+            issuer_id,
+            payment_method_id,
+            transaction_amount: Number(amount),
+            installments: Number(installments),
+            description: "Product Description",
+            payer: {
+              email,
+              identification: {
+                type: identificationType,
+                number: identificationNumber,
+              },
+            },
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Payment response:", data);
+            // Faça algo com a resposta do pagamento
+          })
+          .catch((error) => {
+            console.error("Payment error:", error);
+          });
+      },
+      onFetching: (resource) => {
+        console.log("Fetching resource: ", resource);
+  
+        // Animate progress bar
+        const progressBar = document.querySelector(".progress-bar");
+        progressBar.removeAttribute("value");
+  
+        return () => {
+          progressBar.setAttribute("value", "0");
+        };
+      },
+    },
+  });
+
+
+
+});
+

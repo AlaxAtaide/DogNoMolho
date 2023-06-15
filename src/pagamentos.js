@@ -1,23 +1,76 @@
-import requests
+document.addEventListener('DOMContentLoaded', () => {
+// Obtém referência ao botão "Pagar"
+const pagarButton = document.getElementById("pagar");
 
-def post_payment(dados_payer):
-url = "https://api.mercadopago.com/v1/payments?access_token=APP_USR-6254730230679675-052316-11feaeb8299da74d1900b970634bd81d-1380542438"
-payload = {
-    "transaction_amount": dados_payer['transaction_amount'],
-    "token":dados_payer['transaction_amount'],
-    "description": dados_payer['description'],
-    "installments": dados_payer['installments'],
-    "payment_method_id": dados_payer['payment_method_id'],
-    "payer":{
-        "email": "teste@test.com.br"
-    }
+// Obtém referência ao modal
+const modal = document.getElementById("modal");
+
+// Adiciona um evento de clique ao botão "Pagar"
+pagarButton.addEventListener("click", function() {
+  // Exibe o modal
+  modal.style.display = "block";
+});
+
+// Fecha o modal quando o usuário clicar fora da área do modal
+window.addEventListener("click", function(event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+// Obtém referência aos botões do modal
+const modalPixButton = document.getElementById("modal-pix");
+const modalCartaoButton = document.getElementById("modal-cartao");
+
+// Adiciona um evento de clique ao botão "PIX"
+modalPixButton.addEventListener("click", function() {
+  // Faça algo quando o usuário selecionar a opção PIX
+  console.log("Opção selecionada: PIX");
+  // Feche o modal
+  modal.style.display = "none";
+});
+
+// Adiciona um evento de clique ao botão "Cartão de Crédito"
+modalCartaoButton.addEventListener("click", function() {
+  // Faça algo quando o usuário selecionar a opção Cartão de Crédito
+  console.log("Opção selecionada: Cartão de Crédito");
+  // Feche o modal
+  modal.style.display = "none";
+});
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+// Adicione este código abaixo do código existente no seu arquivo JavaScript
+
+// Função para carregar e exibir o conteúdo de CheckoutCart.html dentro do modal
+function openCheckoutModal() {
+  const modalContent = document.getElementById("modal-content");
+
+  fetch("CheckoutCart.html")
+    .then((response) => response.text())
+    .then((data) => {
+      modalContent.innerHTML = data;
+      // Exibir o modal
+      openModal();
+    })
+    .catch((error) => {
+      console.error("Error loading CheckoutCart.html:", error);
+    });
 }
 
-header = {"x-meli-session":dados_payer['deviceId']}
+// Função para exibir o modal
+function openModal() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "block";
+}
 
-response = requests.post(url, json=payload, headers=header)
+// Adicione um evento de clique aos métodos de pagamento existentes
+const paymentOptions = document.querySelectorAll(".payment-option");
+paymentOptions.forEach((option) => {
+  option.addEventListener("click", openCheckoutModal);
+});
 
-if response.status_code == 200 or response.status_code == 201:
-    print{'Sucesso'}
-else:
-    print{'error'}
+
+});
